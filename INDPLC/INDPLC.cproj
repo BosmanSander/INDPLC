@@ -28,16 +28,18 @@
     <eraseonlaunchrule>0</eraseonlaunchrule>
     <AsfFrameworkConfig>
       <framework-data xmlns="">
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.32.0" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.32.0" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
+    <ResetRule>0</ResetRule>
+    <EraseKey />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -66,9 +68,22 @@
   <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
-      <Value>libm</Value>
+      <Value>Canbus.cpp</Value>
+      <Value>Canbus.h</Value>
+      <Value>defaults.h</Value>
+      <Value>global.h</Value>
+      <Value>mcp2515.c</Value>
+      <Value>mcp2515.h</Value>
+      <Value>mcp2515_defs.h</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
+  <avrgcc.linker.libraries.LibrarySearchPaths>
+    <ListValues>
+      <Value>C:\Users\Oetze\Desktop\SparkFun_CAN-Bus_Arduino_Library-master</Value>
+      <Value>C:\Users\Oetze\Desktop\SparkFun_CAN-Bus_Arduino_Library-master\src</Value>
+      <Value>C:\Users\Oetze\OneDrive - De Haagse Hogeschool\Jaar 2\Periode 3\Proces contro\INDPLC\INDPLC\Sparkfun_lib\src</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.LibrarySearchPaths>
   <avrgcc.assembler.general.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.1.130\include</Value>
@@ -105,9 +120,22 @@
   <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
   <avrgcc.linker.libraries.Libraries>
     <ListValues>
-      <Value>libm</Value>
+      <Value>Canbus.cpp</Value>
+      <Value>Canbus.h</Value>
+      <Value>defaults.h</Value>
+      <Value>global.h</Value>
+      <Value>mcp2515.c</Value>
+      <Value>mcp2515.h</Value>
+      <Value>mcp2515_defs.h</Value>
     </ListValues>
   </avrgcc.linker.libraries.Libraries>
+  <avrgcc.linker.libraries.LibrarySearchPaths>
+    <ListValues>
+      <Value>C:\Users\Oetze\Desktop\SparkFun_CAN-Bus_Arduino_Library-master</Value>
+      <Value>C:\Users\Oetze\Desktop\SparkFun_CAN-Bus_Arduino_Library-master\src</Value>
+      <Value>C:\Users\Oetze\OneDrive - De Haagse Hogeschool\Jaar 2\Periode 3\Proces contro\INDPLC\INDPLC\Sparkfun_lib\src</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.LibrarySearchPaths>
   <avrgcc.assembler.general.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\atmel\ATmega_DFP\1.1.130\include</Value>

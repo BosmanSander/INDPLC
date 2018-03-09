@@ -6,10 +6,15 @@
  */ 
 
 #include <avr/io.h>
-
+#include <stdlib.h>
+#include <stdio.h>
+#include "mcp2515.h"
 
 int main(void)
 {
+	
+	mcp2515_init();
+
     /* Replace with your application code */
     while (1) 
     {
@@ -17,3 +22,4 @@ int main(void)
     }
 }
 
+	
