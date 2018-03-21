@@ -37,7 +37,8 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../main.c
+../main.c \
+../mcp2515.c
 
 
 PREPROCESSING_SRCS += 
@@ -47,16 +48,20 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-main.o
+main.o \
+mcp2515.o
 
 OBJS_AS_ARGS +=  \
-main.o
+main.o \
+mcp2515.o
 
 C_DEPS +=  \
-main.d
+main.d \
+mcp2515.d
 
 C_DEPS_AS_ARGS +=  \
-main.d
+main.d \
+mcp2515.d
 
 OUTPUT_FILE_PATH +=INDPLC.elf
 
@@ -72,6 +77,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 
@@ -107,7 +114,7 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR/GNU Linker : 5.4.0
-	$(QUOTE)D:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="INDPLC.map" -Wl,--start-group -Wl,-lCanbus.cpp -Wl,-lCanbus.h -Wl,-ldefaults.h -Wl,-lglobal.h -Wl,-lmcp2515.c -Wl,-lmcp2515.h -Wl,-lmcp2515_defs.h  -Wl,--end-group -Wl,-L"C:\Users\Oetze\Desktop\SparkFun_CAN-Bus_Arduino_Library-master" -Wl,-L"C:\Users\Oetze\Desktop\SparkFun_CAN-Bus_Arduino_Library-master\src" -Wl,-L"C:\Users\Oetze\ONEDRI~1\JAAR2~1\PERIOD~3\PROCES~1\INDPLC\INDPLC\SPARKF~1\src"  -Wl,--gc-sections -mmcu=atmega328p -B "D:\Atmel\7.0\Packs\atmel\ATmega_DFP\1.1.130\gcc\dev\atmega328p"  
+	$(QUOTE)D:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="INDPLC.map" -Wl,--start-group -Wl,-lCanbus.cpp -Wl,-lCanbus.h -Wl,-ldefaults.h -Wl,-lglobal.h -Wl,-lmcp2515.c -Wl,-lmcp2515.h -Wl,-lmcp2515_defs.h  -Wl,--end-group -Wl,-L"C:\Users\Oetze\Desktop\SparkFun_CAN-Bus_Arduino_Library-master" -Wl,-L"C:\Users\Oetze\Desktop\SparkFun_CAN-Bus_Arduino_Library-master\src" -Wl,-L"C:\Users\Oetze\ONEDRI~1\JAAR2~1\PERIOD~3\PROCES~1\INDPLC\INDPLC\SPARKF~1\src"  -mmcu=atmega328p -B "D:\Atmel\7.0\Packs\atmel\ATmega_DFP\1.1.130\gcc\dev\atmega328p"  
 	@echo Finished building target: $@
 	"D:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "INDPLC.elf" "INDPLC.hex"
 	"D:\Atmel\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "INDPLC.elf" "INDPLC.eep" || exit 0
